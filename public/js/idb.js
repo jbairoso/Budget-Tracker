@@ -14,5 +14,14 @@ request.onsuccess = function (event) {
   }
 };
 
+request.onerror = function (e) {
+  console.log("error: " + e.target.errorCode);
+};
 
-window.addEventListener('online', checkDatabase);
+function saveRecord(record) {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const store = transaction.objectStore("pending");
+
+  store.add(record);
+}
+window.addEventListener("online", checkDatabase);
