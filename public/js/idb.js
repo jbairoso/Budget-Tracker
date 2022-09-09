@@ -43,7 +43,7 @@ function checkDatabase() {
       then((response) => response.json()).then(() => {
         const transaction = db.transaction("nw_transaction", "readwrite");
         const store = transaction.objectStore("nw_transaction");
-        
+
         store.clear();
       });
     }
